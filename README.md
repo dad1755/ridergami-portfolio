@@ -1,0 +1,1 @@
+I’m a self-driven tech explorer passionate about cloud infrastructure, automation, and system scalability. Currently diving deep into the world of AWS, Docker, Kubernetes, and configuration management tools like Ansible.
