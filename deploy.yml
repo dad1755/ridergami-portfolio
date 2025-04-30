@@ -2,13 +2,14 @@
   hosts: ec1
   become: yes
   tasks:
-    - name: Install httpd and firewalld
+    - name: Install httpd, firewalld, and mod_ssl
       dnf:
         name: "{{ item }}"
         state: present
       loop:
         - httpd
         - firewalld
+        - mod_ssl  # Apache SSL module
 
     - name: Ensure firewalld is running
       service:
@@ -16,12 +17,15 @@
         state: started
         enabled: yes
 
-    - name: Ensure firewalld allows HTTP
+    - name: Ensure firewalld allows HTTP and HTTPS
       firewalld:
-        port: 80/tcp
+        port: "{{ item }}"
         permanent: yes
         state: enabled
         immediate: yes
+      loop:
+        - 80/tcp
+        - 443/tcp
 
     - name: Ensure httpd is running
       service:
@@ -41,7 +45,7 @@
         dest: /var/www/html/index.html
         mode: '0644'
 
-    - name: Configure Apache virtual host for HTTP
+    - name: Configure Apache virtual host for HTTP (port 80)
       copy:
         content: |
           <VirtualHost *:80>
@@ -52,7 +56,25 @@
                   Require all granted
               </Directory>
           </VirtualHost>
-        dest: /etc/httpd/conf.d/vhost.conf
+        dest: /etc/httpd/conf.d/vhost_http.conf
+        mode: '0644'
+      notify: Reload httpd
+
+    - name: Configure Apache virtual host for HTTPS (port 443)
+      copy:
+        content: |
+          <VirtualHost *:443>
+              ServerName mohdmiqdad.site
+              DocumentRoot /var/www/html
+              <Directory /var/www/html>
+                  AllowOverride All
+                  Require all granted
+              </Directory>
+              SSLEngine on
+              SSLCertificateFile /etc/ssl/certs/self-signed-cert.crt
+              SSLCertificateKeyFile /etc/ssl/private/self-signed-cert.key
+          </VirtualHost>
+        dest: /etc/httpd/conf.d/vhost_https.conf
         mode: '0644'
       notify: Reload httpd
 
@@ -61,8 +83,8 @@
         path: /var/www/html/.htaccess
         state: absent
 
-    - name: Verify Apache is listening on port 80
-      command: netstat -tuln | grep :80
+    - name: Verify Apache is listening on port 80 and 443
+      command: netstat -tuln | grep ':80\|:443'
       register: netstat_output
       changed_when: false
       failed_when: "'LISTEN' not in netstat_output.stdout"
