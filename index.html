@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Mohd Miqdad | System Administrator Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    .animate-slideIn {
+      animation: slideIn 0.8s ease-out forwards;
+    }
+    .hover-scale {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hover-scale:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    .bg-gradient-custom {
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 antialiased">
+
+  <!-- Header -->
+  <header class="bg-gradient-custom text-white py-20 text-center">
+    <h1 class="text-4xl md:text-5xl font-bold animate-fadeIn">Mohd Miqdad</h1>
+    <p class="mt-4 text-xl md:text-2xl opacity-90 animate-fadeIn" style="animation-delay: 0.2s;">
+      System Administrator | DevOps Enthusiast | IT Infrastructure Specialist
+    </p>
+    <button id="cta-btn" class="mt-6 px-8 py-3 bg-white text-blue-600 font-semibold rounded-full hover:bg-blue-100 transition animate-fadeIn" style="animation-delay: 0.4s;">
+      Explore My Work
+    </button>
+  </header>
+
+  <!-- About Me -->
+  <section id="about-me" class="max-w-5xl mx-auto py-16 px-4">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 animate-fadeIn">About Me</h2>
+    <p class="text-lg leading-relaxed text-gray-600 max-w-3xl mx-auto animate-fadeIn" style="animation-delay: 0.2s;">
+      I'm a dedicated IT professional with extensive experience in system administration, server management, and network operations. I specialize in deploying and maintaining enterprise solutions like GLPI, Nagios, and Wazuh, ensuring secure and efficient operations in both connected and offline environments. My passion lies in optimizing infrastructure, automating processes, and providing hands-on technical support to drive business continuity.
+    </p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="bg-white py-16">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 animate-fadeIn">Technical Skills</h2>
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
+      <div class="bg-gray-50 p-6 rounded-lg shadow-md hover-scale animate-slideIn" style="animation-delay: 0.2s;">
+        <h3 class="text-xl font-semibold mb-3">Platforms & Systems</h3>
+        <p class="text-gray-600">Linux, Wintel, VMware ESX, Kubernetes, Docker</p>
+      </div>
+      <div class="bg-gray-50 p-6 rounded-lg shadow-md hover-scale animate-slideIn" style="animation-delay: 0.4s;">
+        <h3 class="text-xl font-semibold mb-3">Monitoring & Tools</h3>
+        <p class="text-gray-600">Nagios, Wazuh, GLPI, Cockpit, Ansible</p>
+      </div>
+      <div class="bg-gray-50 p-6 rounded-lg shadow-md hover-scale animate-slideIn" style="animation-delay: 0.6s;">
+        <h3 class="text-xl font-semibold mb-3">Networking</h3>
+        <p class="text-gray-600">TCP/IP, Subnetting, VLAN, DNS, DHCP</p>
+      </div>
+      <div class="bg-gray-50 p-6 rounded-lg shadow-md hover-scale animate-slideIn" style="animation-delay: 0.8s;">
+        <h3 class="text-xl font-semibold mb-3">Programming</h3>
+        <p class="text-gray-600">C#, MySQL, Python, Bash</p>
+      </div>
+      <div class="bg-gray-50 p-6 rounded-lg shadow-md hover-scale animate-slideIn" style="animation-delay: 1.0s;">
+        <h3 class="text-xl font-semibold mb-3">Core Competencies</h3>
+        <p class="text-gray-600">Troubleshooting, Technical Documentation, System Optimization</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="max-w-5xl mx-auto py-16 px-4">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 animate-fadeIn">Professional Experience</h2>
+    <div class="space-y-8">
+      <div class="bg-gray-50 p-6 rounded-lg shadow-md hover-scale animate-slideIn" style="animation-delay: 0.2s;">
+        <h3 class="text-xl font-semibold mb-2">Technical Engineer</h3>
+        <ul class="list-disc pl-5 text-gray-600">
+          <li>Led deployment of GLPI and Nagios, managing over 2,500 assets and monitoring 147 production servers.</li>
+          <li>Containerized GLPI with Docker, reducing deployment time by 50%.</li>
+          <li>Built internal lab using Cockpit on Red Hat Linux to simulate recovery and infrastructure scenarios.</li>
+          <li>Implemented Wazuh (SIEM) for log analysis and intrusion detection.</li>
+          <li>Trained IT teams, ensuring smooth project handovers and reduced escalations.</li>
+        </ul>
+      </div>
+      <div class="bg-gray-50 p-6 rounded-lg shadow-md hover-scale animate-slideIn" style="animation-delay: 0.4s;">
+        <h3 class="text-xl font-semibold mb-2">Freelance Software Developer</h3>
+        <ul class="list-disc pl-5 text-gray-600">
+          <li>Developed a custom C#/MySQL expense tracking system for a construction firm.</li>
+          <li>Completed certifications in Networking, Python, Linux, and Cybersecurity.</li>
+          <li>Pursued part-time BSc in IT while delivering freelance tech solutions.</li>
+        </ul>
+      </div>
+      <div class="bg-gray-50 p-6 rounded-lg shadow-md hover-scale animate-slideIn" style="animation-delay: 0.6s;">
+        <h3 class="text-xl font-semibold mb-2">Infrastructure Engineer</h3>
+        <ul class="list-disc pl-5 text-gray-600">
+          <li>Managed server and network infrastructure across Linux, Windows, and VMware environments.</li>
+          <li>Enhanced network performance by optimizing TCP/IP, VLAN, DNS, and DHCP configurations.</li>
+          <li>Created SOPs and trained clients, reducing setup time and support tickets.</li>
+        </ul>
+      </div>
+      <div class="bg-gray-50 p-6 rounded-lg shadow-md hover-scale animate-slideIn" style="animation-delay: 0.8s;">
+        <h3 class="text-xl font-semibold mb-2">Junior System & Network Technician</h3>
+        <ul class="list-disc pl-5 text-gray-600">
+          <li>Supported hospital IT systems, designing LAN/Wi-Fi for over 300 staff.</li>
+          <li>Resolved 90% of server issues, minimizing hardware escalations.</li>
+          <li>Documented network setups and trained IT staff, reducing vendor dependency.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="bg-white py-16">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 animate-fadeIn">Key Projects</h2>
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
+      <div class="bg-gray-50 p-6 rounded-lg shadow-md hover-scale animate-slideIn" style="animation-delay: 0.2s;">
+        <h3 class="text-xl font-semibold mb-2">GLPI Deployment on Docker</h3>
+        <p class="text-gray-600">Containerized GLPI for asset management, streamlining deployment and scalability for enterprise use.</p>
+      </div>
+      <div class="bg-gray-50 p-6 rounded-lg shadow-md hover-scale animate-slideIn" style="animation-delay: 0.4s;">
+        <h3 class="text-xl font-semibold mb-2">Nagios Server Monitoring</h3>
+        <p class="text-gray-600">Implemented Nagios to monitor 147 production servers, ensuring high availability and performance.</p>
+      </div>
+      <div class="bg-gray-50 p-6 rounded-lg shadow-md hover-scale animate-slideIn" style="animation-delay: 0.6s;">
+        <h3 class="text-xl font-semibold mb-2">Wazuh SIEM Implementation</h3>
+        <p class="text-gray-600">Deployed Wazuh for log analysis and intrusion detection, enhancing security monitoring capabilities.</p>
+      </div>
+      <div class="bg-gray-50 p-6 rounded-lg shadow-md hover-scale animate-slideIn" style="animation-delay: 0.8s;">
+        <h3 class="text-xl font-semibold mb-2">Expense Tracking System</h3>
+        <p class="text-gray-600">Developed a C#/MySQL-based system for a construction firm to track project expenses efficiently.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certifications" class="max-w-5xl mx-auto py-16 px-4">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 animate-fadeIn">Certifications</h2>
+    <ul class="space-y-4 max-w-3xl mx-auto animate-fadeIn" style="animation-delay: 0.2s;">
+      <li class="bg-gray-50 p-4 rounded-lg shadow-md hover-scale">Network Level 4 (Jabatan Pembangunan Kemahiran)</li>
+      <li class="bg-gray-50 p-4 rounded-lg shadow-md hover-scale">Coursera: Networking</li>
+      <li class="bg-gray-50 p-4 rounded-lg shadow-md hover-scale">Coursera: Python</li>
+      <li class="bg-gray-50 p-4 rounded-lg shadow-md hover-scale">Coursera: Linux</li>
+      <li class="bg-gray-50 p-4 rounded-lg shadow-md hover-scale">Coursera: Cybersecurity</li>
+    </ul>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="bg-gradient-custom text-white py-16 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6 animate-fadeIn">Get in Touch</h2>
+    <p class="text-lg max-w-2xl mx-auto mb-6 animate-fadeIn" style="animation-delay: 0.2s;">
+      Interested in collaborating or discussing opportunities? Feel free to reach out!
+    </p>
+    <div class="flex justify-center space-x-6">
+      <a href="mailto:dad1755@gmail.com" class="text-white hover:text-blue-200 transition animate-fadeIn" style="animation-delay: 0.4s;">
+        <svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+        dad1755@gmail.com
+      </a>
+      <a href="tel:+60109409406" class="text-white hover:text-blue-200 transition animate-fadeIn" style="animation-delay: 0.6s;">
+        <svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
+        +6010-9409406
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8 text-center">
+    <p class="animate-fadeIn">© 2025 Mohd Miqdad. Crafted with passion for technology.</p>
+  </footer>
+
+  <script>
+    // Smooth scroll for CTA button
+    document.getElementById('cta-btn').addEventListener('click', () => {
+      document.getElementById('about-me').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Intersection Observer for animations
+    const elements = document.querySelectorAll('.animate-fadeIn, .animate-slideIn');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    elements.forEach(el => {
+      el.style.animationPlayState = 'paused';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
