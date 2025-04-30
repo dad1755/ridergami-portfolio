@@ -8,18 +8,15 @@ pipeline {
         }
         stage('Build') {
             steps {
-                // Your existing build steps
-                sh 'echo "Build successful"'
+                sh 'echo "Build successful"' // Add your build steps here
             }
         }
         stage('Deploy') {
             steps {
-                // Ensure workspace has the index.html file
-                sh 'ls -la'
-                // Run Ansible playbook
+                sh 'ls -la' // Verify files (index.html, deploy.yml, inventory.ini)
                 ansiblePlaybook(
                     playbook: 'deploy.yml',
-                    inventory: 'inventory.yml',
+                    inventory: 'inventory.ini',
                     credentialsId: 'ansible-ssh-key',
                     colorized: true
                 )
