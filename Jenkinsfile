@@ -1,35 +1,28 @@
 pipeline {
     agent any
-    environment {
-        EC2_IP = '3.26.0.175'
-        DOCKER_IMAGE = 'ridergami-portfolio:latest'
-    }
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/dad1755/ridergami-portfolio.git'
+                git url: 'https://github.com/dad1755/ridergami-portfolio', branch: 'main'
             }
         }
-        stage('Build Docker Image') {
+        stage('Build') {
             steps {
-                script {
-                    // Build Docker image
-                    sh 'docker build -t $DOCKER_IMAGE .'
-                }
+                // Your existing build steps
+                sh 'echo "Build successful"'
             }
         }
-        stage('Deploy to EC2') {
+        stage('Deploy') {
             steps {
-                script {
-                    // SSH into EC2 and run the Docker container
-                    sh '''
-                    ssh -o StrictHostKeyChecking=no -i /home/ec2-user/aws/dad.pem ec2-user@$EC2_IP << EOF
-                    docker stop ridergami-portfolio || true
-                    docker rm ridergami-portfolio || true
-                    docker run -d --name ridergami-portfolio -p 80:80 $DOCKER_IMAGE
-                    EOF
-                    '''
-                }
+                // Ensure workspace has the index.html file
+                sh 'ls -la'
+                // Run Ansible playbook
+                ansiblePlaybook(
+                    playbook: 'deploy.yml',
+                    inventory: 'inventory.yml',
+                    credentialsId: 'ansible-ssh-key',
+                    colorized: true
+                )
             }
         }
     }
