@@ -2,7 +2,7 @@
   hosts: ec1
   become: yes
   tasks:
-    - name: Install httpd, firewalld, and mod_ssl
+    - name: Install httpd, firewalld, mod_ssl, and Certbot
       dnf:
         name: "{{ item }}"
         state: present
@@ -10,6 +10,8 @@
         - httpd
         - firewalld
         - mod_ssl
+        - certbot
+        - python3-certbot-apache
 
     - name: Ensure firewalld is running
       service:
@@ -60,13 +62,21 @@
         mode: '0644'
       notify: Reload httpd
 
-    - name: Ensure no HTTP to HTTPS redirection
+    - name: Ensure no HTTP to HTTPS redirection (Let’s Encrypt handles this)
       file:
         path: /var/www/html/.htaccess
         state: absent
 
-    - name: Verify Apache is listening on port 80
-      command: netstat -tuln | grep :80
+    - name: Run Certbot to get SSL certificate (non-interactive)
+      command: >
+        certbot --apache -n --agree-tos --redirect
+        --email miqdad1755@gmail.com
+        -d mohdmiqdad.site
+      args:
+        creates: /etc/letsencrypt/live/mohdmiqdad.site/fullchain.pem
+
+    - name: Verify Apache is listening on port 80 and 443
+      command: netstat -tuln | grep ':80\|:443'
       register: netstat_output
       changed_when: false
       failed_when: "'LISTEN' not in netstat_output.stdout"
