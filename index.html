@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Ridergami | Cloud Engineer Journey</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    .hover-scale {
+      transition: transform 0.3s ease;
+    }
+    .hover-scale:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans text-gray-800">
+
+  <header class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-16 text-center">
+    <h1 class="text-4xl md:text-5xl font-bold animate-fadeIn">Hello, I'm Ridergami 👋</h1>
+    <p class="mt-4 text-lg md:text-xl opacity-90 animate-fadeIn" style="animation-delay: 0.2s;">
+      Aspiring Cloud Engineer | DevOps Enthusiast | Lifelong Learner
+    </p>
+    <button id="cta-btn" class="mt-6 px-6 py-3 bg-white text-blue-600 font-semibold rounded-full hover:bg-blue-100 transition animate-fadeIn" style="animation-delay: 0.4s;">
+      Explore My Journey
+    </button>
+  </header>
+
+  <section id="about-me" class="max-w-4xl mx-auto py-12 px-4">
+    <h2 class="text-3xl font-bold text-center mb-6 animate-fadeIn">About Me</h2>
+    <p class="text-lg leading-relaxed text-gray-600 animate-fadeIn" style="animation-delay: 0.2s;">
+      I’m a self-driven tech explorer passionate about cloud infrastructure, automation, and system scalability. 
+      Currently diving deep into the world of AWS, Docker, Kubernetes, and configuration management tools like Ansible.
+    </p>
+  </section>
+
+  <section id="skills" class="bg-white py-12">
+    <h2 class="text-3xl font-bold text-center mb-8 animate-fadeIn">Technical Stack</h2>
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
+      <div class="feature bg-gray-50 p-6 rounded-lg shadow-md hover-scale animate-fadeIn" style="animation-delay: 0.2s;">
+        <h3 class="text-xl font-semibold mb-2">Languages</h3>
+        <p class="text-gray-600">C#, Python, JavaScript, Bash</p>
+      </div>
+      <div class="feature bg-gray-50 p-6 rounded-lg shadow-md hover-scale animate-fadeIn" style="animation-delay: 0.4s;">
+        <h3 class="text-xl font-semibold mb-2">DevOps & Tools</h3>
+        <p class="text-gray-600">Git, Jenkins, Docker, Ansible, Terraform</p>
+      </div>
+      <div class="feature bg-gray-50 p-6 rounded-lg shadow-md hover-scale animate-fadeIn" style="animation-delay: 0.6s;">
+        <h3 class="text-xl font-semibold mb-2">Cloud & Containers</h3>
+        <p class="text-gray-600">AWS EC2, S3, IAM, Kubernetes (kubeadm, kubectl), Helm</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="max-w-4xl mx-auto py-12 px-4">
+    <h2 class="text-3xl font-bold text-center mb-8 animate-fadeIn">Projects</h2>
+    <ul class="space-y-4 animate-fadeIn" style="animation-delay: 0.2s;">
+      <li class="bg-gray-50 p-4 rounded-lg shadow-sm hover-scale">
+        <strong>CI/CD Pipeline:</strong> GitHub → Jenkins → Docker Hub → Kubernetes on AWS
+      </li>
+      <li class="bg-gray-50 p-4 rounded-lg shadow-sm hover-scale">
+        <strong>Infrastructure Automation:</strong> EC2 provisioning with Ansible
+      </li>
+      <li class="bg-gray-50 p-4 rounded-lg shadow-sm hover-scale">
+        <strong>Microservices App:</strong> Containerized deployment across Kubernetes cluster
+      </li>
+    </ul>
+  </section>
+
+  <section id="goal" class="bg-gradient-to-r from-blue-50 to-indigo-50 py-12 px-4">
+    <h2 class="text-3xl font-bold text-center mb-6 animate-fadeIn">My Goal</h2>
+    <p class="max-w-3xl mx-auto text-lg leading-relaxed text-gray-600 animate-fadeIn" style="animation-delay: 0.2s;">
+      I aim to become a certified Cloud Engineer capable of designing, deploying, and maintaining reliable, secure, and scalable systems.
+      With consistent learning and hands-on practice, I'm building real-world pipelines and infrastructure using industry tools.
+      <br/><br/>
+      <em class="block text-center">"Every step is a lesson, every deploy a milestone — InsyaAllah."</em>
+    </p>
+  </section>
+
+  <footer class="bg-gray-800 text-white py-6 text-center">
+    <p class="animate-fadeIn">© 2025 Ridergami. Built with 💙 on the cloud.</p>
+  </footer>
+
+  <script>
+    document.getElementById('cta-btn').addEventListener('click', () => {
+      document.getElementById('about-me').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Add scroll animation trigger
+    const elements = document.querySelectorAll('.animate-fadeIn');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    elements.forEach(el => {
+      el.style.animationPlayState = 'paused';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
