@@ -1,0 +1,80 @@
+- name: Deploy index.html and configure Apache on Amazon Linux 2023
+  hosts: ec1
+  become: yes
+  tasks:
+    - name: Install httpd and firewalld
+      dnf:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - httpd
+        - firewalld
+
+    - name: Ensure firewalld is running
+      service:
+        name: firewalld
+        state: started
+        enabled: yes
+
+    - name: Ensure firewalld allows HTTP
+      firewalld:
+        port: 80/tcp
+        permanent: yes
+        state: enabled
+        immediate: yes
+
+    - name: Ensure httpd is running
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+
+    - name: Create web root directory
+      file:
+        path: /var/www/html
+        state: directory
+        mode: '0755'
+
+    - name: Copy index.html to the EC1 instance
+      copy:
+        src: ./index.html
+        dest: /var/www/html/index.html
+        mode: '0644'
+
+    - name: Configure Apache virtual host for HTTP
+      copy:
+        content: |
+          <VirtualHost *:80>
+              ServerName mohdmiqdad.site
+              DocumentRoot /var/www/html
+              <Directory /var/www/html>
+                  AllowOverride All
+                  Require all granted
+              </Directory>
+          </VirtualHost>
+        dest: /etc/httpd/conf.d/vhost.conf
+        mode: '0644'
+      notify: Reload httpd
+
+    - name: Ensure no HTTP to HTTPS redirection
+      file:
+        path: /var/www/html/.htaccess
+        state: absent
+
+    - name: Verify Apache is listening on port 80
+      command: netstat -tuln | grep :80
+      register: netstat_output
+      changed_when: false
+      failed_when: "'LISTEN' not in netstat_output.stdout"
+
+    - name: Verify index.html exists
+      stat:
+        path: /var/www/html/index.html
+      register: index_stat
+      failed_when: not index_stat.stat.exists
+
+  handlers:
+    - name: Reload httpd
+      service:
+        name: httpd
+        state: reloaded
