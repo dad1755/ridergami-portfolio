@@ -47,7 +47,7 @@
         dest: /var/www/html/index.html
         mode: '0644'
 
-    - name: Configure Apache virtual host (HTTP only – Let’s Encrypt will handle HTTPS)
+    - name: Configure Apache virtual host (HTTP only)
       copy:
         content: |
           <VirtualHost *:80>
@@ -62,18 +62,51 @@
         mode: '0644'
       notify: Reload httpd
 
-    - name: Ensure no HTTP to HTTPS redirection (Let’s Encrypt handles this)
+    - name: Ensure no HTTP to HTTPS redirection (optional, as not needed)
       file:
         path: /var/www/html/.htaccess
         state: absent
 
-    - name: Run Certbot to get SSL certificate (non-interactive)
-      command: >
-        certbot --apache -n --agree-tos --redirect
-        --email miqdad1755@gmail.com
-        -d mohdmiqdad.site
-      args:
-        creates: /etc/letsencrypt/live/mohdmiqdad.site/fullchain.pem
+    - name: Create SSL backup directory
+      file:
+        path: /var/sslbckp
+        state: directory
+        mode: '0755'
+
+    - name: Backup vhost_https.conf
+      copy:
+        src: /etc/httpd/conf.d/vhost_https.conf
+        dest: /var/sslbckp/vhost_https.conf
+        remote_src: yes
+        mode: '0644'
+      ignore_errors: yes  # In case the file doesn't exist yet
+
+    - name: Backup letsencrypt directory
+      copy:
+        src: /etc/letsencrypt/
+        dest: /var/sslbckp/letsencrypt/
+        remote_src: yes
+        mode: '0700'
+        directory_mode: '0700'
+      ignore_errors: yes  # In case the directory doesn't exist
+
+    - name: Restore vhost_https.conf to original location
+      copy:
+        src: /var/sslbckp/vhost_https.conf
+        dest: /etc/httpd/conf.d/vhost_https.conf
+        remote_src: yes
+        mode: '0644'
+      ignore_errors: yes  # In case the backup file doesn't exist
+      notify: Reload httpd
+
+    - name: Restore letsencrypt directory to original location
+      copy:
+        src: /var/sslbckp/letsencrypt/
+        dest: /etc/letsencrypt/
+        remote_src: yes
+        mode: '0700'
+        directory_mode: '0700'
+      ignore_errors: yes  # In case the backup directory doesn't exist
 
     - name: Verify Apache is listening on port 80 and 443
       command: netstat -tuln | grep ':80\|:443'
