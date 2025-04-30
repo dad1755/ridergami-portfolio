@@ -1,6 +1,6 @@
 - name: Deploy index.html to EC2
-  hosts: ansible-target1
-  become: yes  # Run as sudo, if needed
+  hosts: ec1
+  become: yes
   tasks:
     - name: Copy index.html to the EC1 instance
       copy:
