@@ -256,6 +256,16 @@ l<!DOCTYPE html>
         Monitoring▶ Monitor System With NetData
       </button>
     </div>
+    <div x-data="{ subOpen: false }">
+      <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
+        Deployment▶ Deploy Nodejs Server
+      </button>
+    </div>
+    <div x-data="{ subOpen: false }">
+      <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
+        Deployment▶ Deploy Drupal Server
+      </button>
+    </div>
   </div>
 </div>
 
