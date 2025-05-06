@@ -266,6 +266,44 @@ l<!DOCTYPE html>
         Deployment▶ Deploy Drupal Server + Ansible
       </button>
     </div>
+
+    <div x-data="{ subOpen: false }">
+  <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
+    Scripting ▶ (arrow down) Bash script to check if an EC2 instance is running
+  </button>
+  <div x-show="subOpen" class="pl-6 pt-2 text-[5px] font-mono whitespace-pre-wrap">
+    #!/usr/bin/env python3
+    import os
+    import boto3
+    from datetime import datetime
+
+    with open('instance_ids.txt', 'r') as file:
+        instance_ids = [line.strip('"\n') for line in file]
+
+    ec2 = boto3.client('ec2')
+    current_time = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+    output_dir = "ec2-status"
+    os.makedirs(output_dir, exist_ok=True)
+    output_file_path = os.path.join(output_dir, f"ec2_status_{current_time}.txt")
+    response = ec2.describe_instances(InstanceIds=instance_ids)
+
+    with open(output_file_path, 'w') as output_file:
+        for reservation in response['Reservations']:
+            for instance in reservation['Instances']:
+                instance_id = instance['InstanceId']
+                state = instance['State']['Name']
+                name = "N/A"
+                if 'Tags' in instance:
+                    for tag in instance['Tags']:
+                        if tag['Key'] == 'Name':
+                            name = tag['Value']
+                            break
+                output_file.write(f"Instance {instance_id} ({name}) is {state}\n")
+
+    print(f"[✓] EC2 status written to: {output_file_path}")
+  </div>
+</div>
+
   </div>
 </div>
 
