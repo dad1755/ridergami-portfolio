@@ -106,206 +106,226 @@ l<!DOCTYPE html>
   </div>
 </section>
 
-
-  
-<!-- Projects -->
+  <!-- Projects -->
 <section id="projects" class="bg-white py-8">
-<h2 class="text-3xl md:text-4xl font-bold text-center mb-4 animate-fadeIn">Key Projects</h2>
-<div class="max-w-5xl mx-auto grid grid-cols-1 gap-6 px-4 py-8">
+  <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 animate-fadeIn">Key Projects</h2>
+  <div class="max-w-5xl mx-auto grid grid-cols-1 gap-6 px-4 py-8">
+    <!-- Project 1 -->
+    <div x-data="{ open: false }" class="bg-gray-50 p-6 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 animate-slideIn" style="animation-delay: 0.2s;">
+      <button @click="open = !open" class="flex items-center justify-between w-full text-left">
+        <div class="flex items-center space-x-2">
+          <h3 class="text-xl font-semibold">Portfolio Website with CI/CD</h3>
+        </div>
+        <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-600 transition-transform duration-300 ml-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <p x-show="open" x-transition class="text-gray-600 mt-2">
+        Designed and developed this portfolio website using HTML, Tailwind CSS, and JavaScript, with content generated via Grok.com. Hosted on a GitHub repository with Jenkins for automated CI/CD, enabling seamless updates and deployment to a production server.
+      </p>
+    </div>
 
-  <!-- Project 1 -->
-  <div x-data="{ open: false }" class="bg-gray-50 p-6 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 animate-slideIn" style="animation-delay: 0.2s;">
-    <button @click="open = !open" class="flex items-center justify-between w-full text-left">
-      <div class="flex items-center space-x-2">
-        <h3 class="text-xl font-semibold">Portfolio Website with CI/CD</h3>
+    <!-- Project 2 -->
+    <div x-data="{ open: false }" class="bg-gray-50 p-6 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 animate-slideIn" style="animation-delay: 0.4s;">
+      <button @click="open = !open" class="flex items-center justify-between w-full text-left">
+        <div class="flex items-center space-x-2">
+          <h3 class="text-xl font-semibold">GLPI Deployment on Docker</h3>
+        </div>
+        <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-600 transition-transform duration-300 ml-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <p x-show="open" x-transition class="text-gray-600 mt-2">
+        Containerized GLPI for asset management, streamlining deployment and scalability for enterprise use.
+      </p>
+    </div>
+
+    <!-- Project 3 -->
+    <div x-data="{ open: false }" class="bg-gray-50 p-6 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 animate-slideIn" style="animation-delay: 0.6s;">
+      <button @click="open = !open" class="flex items-center justify-between w-full text-left">
+        <div class="flex items-center space-x-2">
+          <h3 class="text-xl font-semibold">Nagios Server Monitoring</h3>
+        </div>
+        <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-600 transition-transform duration-300 ml-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <p x-show="open" x-transition class="text-gray-600 mt-2">
+        Implemented Nagios to monitor 147 production servers, ensuring high availability and performance.
+      </p>
+    </div>
+
+    <!-- Project 4 -->
+    <div x-data="{ open: false }}" class="bg-gray-50 p-6 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 animate-slideIn" style="animation-delay: 0.8s;">
+      <button @click="open = !open" class="flex items-center justify-between w-full text-left">
+        <div class="flex items-center space-x-2">
+          <h3 class="text-xl font-semibold">Wazuh SIEM Implementation</h3>
+        </div>
+        <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-600 transition-transform duration-300 ml-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <p x-show="open" x-transition class="text-gray-600 mt-2">
+        Deployed Wazuh for log analysis and intrusion detection, enhancing security monitoring capabilities.
+      </p>
+    </div>
+
+    <!-- Project 5 -->
+    <div x-data="{ open: false }" class="bg-gray-50 p-6 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 animate-slideIn" style="animation-delay: 1.0s;">
+      <button @click="open = !open" class="flex items-center justify-between w-full text-left">
+        <div class="flex items-center space-x-2">
+          <h3 class="text-xl font-semibold">Expense Tracking System</h3>
+        </div>
+        <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-600 transition-transform duration-300 ml-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <p x-show="open" x-transition class="text-gray-600 mt-2">
+        Developed a C#/MySQL-based system for a construction firm to track project expenses efficiently.
+      </p>
+    </div>
+
+    <!-- Project 6 -->
+    <div x-data="{ open: false }" class="bg-gray-50 p-6 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 animate-slideIn" style="animation-delay: 1.2s;">
+      <button @click="open = !open" class="flex items-center justify-between w-full text-left">
+        <div class="flex items-center space-x-2">
+          <h3 class="text-xl font-semibold">E-commerce Website with AWS Lightsail</h3>
+        </div>
+        <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-600 transition-transform duration-300 ml-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <p x-show="open" x-transition class="text-gray-600 mt-2">
+        Built a scalable e-commerce website using a prebuilt WordPress instance on AWS Lightsail.
+      </p>
+    </div>
+
+    <!-- Project 7 -->
+    <div x-data="{ open: false }" class="bg-gray-50 p-6 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 animate-slideIn" style="animation-delay: 1.4s;">
+      <button @click="open = !open" class="flex items-center justify-between w-full text-left">
+        <div class="flex items-center space-x-2">
+          <h3 class="text-xl font-semibold">Personal Project</h3>
+        </div>
+        <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-600 transition-transform duration-300 ml-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <div x-show="open" x-transition class="mt-2 text-gray-600 space-y-2">
+        <div x-data="{ subOpen: false }">
+          <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
+            CLI▶ Server Performance Stat
+          </button>
+          <div x-show="subOpen" x-transition class="pl-6 pt-2 text-gray-600">
+            Developed a CLI tool to monitor server performance metrics, including CPU, memory, and disk usage.
+          </div>
+        </div>
+        <div x-data="{ subOpen: false }">
+          <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
+            CLI▶ Nginx Log Analyser
+          </button>
+          <div x-show="subOpen" x-transition class="pl-6 pt-2 text-gray-600">
+            Created a CLI tool to parse and analyze Nginx logs, providing insights into traffic patterns and errors.
+          </div>
+        </div>
+        <div x-data="{ subOpen: false }">
+          <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
+            CLI▶ Log Archive Tool
+          </button>
+          <div x-show="subOpen" x-transition class="pl-6 pt-2 text-gray-600">
+            Built a CLI tool to compress and archive log files, optimizing storage and retrieval.
+          </div>
+        </div>
+        <div x-data="{ subOpen: false }">
+          <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
+            CI/CD▶ Use rsync To Update A Remote Server
+          </button>
+          <div x-show="subOpen" x-transition class="pl-6 pt-2 text-gray-600">
+            Implemented a CI/CD pipeline using rsync to synchronize and update files on a remote server.
+          </div>
+        </div>
+        <div x-data="{ subOpen: false }">
+          <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
+            CI/CD▶ GitHub Pages Deployment
+          </button>
+          <div x-show="subOpen" x-transition class="pl-6 pt-2 text-gray-600">
+            Automated deployment of static sites to GitHub Pages using CI/CD workflows.
+          </div>
+        </div>
+        <div x-data="{ subOpen: false }">
+          <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
+            DNS▶ Basic DNS Setup
+          </button>
+          <div x-show="subOpen" x-transition class="pl-6 pt-2 text-gray-600">
+            Configured DNS records for domain management, including A, CNAME, and MX records.
+          </div>
+        </div>
+        <div x-data="{ subOpen: false }">
+          <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
+            Monitoring▶ Monitor System With NetData
+          </button>
+          <div x-show="subOpen" x-transition class="pl-6 pt-2 text-gray-600">
+            Set up NetData for real-time system monitoring, visualizing performance metrics.
+          </div>
+        </div>
+        <div x-data="{ subOpen: false }">
+          <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
+            Deployment▶ Deploy Nodejs Server + Ansible
+          </button>
+          <div x-show="subOpen" x-transition class="pl-6 pt-2 text-gray-600">
+            Automated deployment of a Node.js server using Ansible playbooks for configuration management.
+          </div>
+        </div>
+        <div x-data="{ subOpen: false }">
+          <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
+            Deployment▶ Deploy Drupal Server + Ansible
+          </button>
+          <div x-show="subOpen" x-transition class="pl-6 pt-2 text-gray-600">
+            Deployed a Drupal server with Ansible, ensuring consistent and repeatable setups.
+          </div>
+        </div>
+        <div x-data="{ subOpen: false }">
+          <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
+            Scripting ▶ Bash script to check if an EC2 instance is running
+          </button>
+          <div x-show="subOpen" x-transition class="pl-6 pt-2 text-sm font-mono whitespace-pre-wrap">
+            #!/usr/bin/env python3
+            import os
+            import boto3
+            from datetime import datetime
+
+            with open('instance_ids.txt', 'r') as file:
+                instance_ids = [line.strip('"\n') for line in file]
+
+            ec2 = boto3.client('ec2')
+            current_time = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+            output_dir = "ec2-status"
+            os.makedirs(output_dir, exist_ok=True)
+            output_file_path = os.path.join(output_dir, f"ec2_status_{current_time}.txt")
+            response = ec2.describe_instances(InstanceIds=instance_ids)
+
+            with open(output_file_path, 'w') as output_file:
+                for reservation in response['Reservations']:
+                    for instance in reservation['Instances']:
+                        instance_id = instance['InstanceId']
+                        state = instance['State']['Name']
+                        name = "N/A"
+                        if 'Tags' in instance:
+                            for tag in instance['Tags']:
+                                if tag['Key'] == 'Name':
+                                    name = tag['Value']
+                                    break
+                        output_file.write(f"Instance {instance_id} ({name}) is {state}\n")
+
+            print(f"[✓] EC2 status written to: {output_file_path}")
+          </div>
+        </div>
       </div>
-      <!-- Move Icon to the Right -->
-      <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-600 transition-transform duration-300 ml-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-      </svg>
-    </button>
-    <p x-show="open" x-transition class="text-gray-600 mt-2">
-      Designed and developed this portfolio website using HTML, Tailwind CSS, and JavaScript, with content generated via Grok.com. Hosted on a GitHub repository with Jenkins for automated CI/CD, enabling seamless updates and deployment to a production server.
-    </p>
-  </div>
-
-  <!-- Project 2 -->
-  <div x-data="{ open: false }" class="bg-gray-50 p-6 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 animate-slideIn" style="animation-delay: 0.4s;">
-    <button @click="open = !open" class="flex items-center justify-between w-full text-left">
-      <div class="flex items-center space-x-2">
-        <h3 class="text-xl font-semibold">GLPI Deployment on Docker</h3>
-      </div>
-      <!-- Move Icon to the Right -->
-      <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-600 transition-transform duration-300 ml-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-      </svg>
-    </button>
-    <p x-show="open" x-transition class="text-gray-600 mt-2">
-      Containerized GLPI for asset management, streamlining deployment and scalability for enterprise use.
-    </p>
-  </div>
-
-  <!-- Project 3 -->
-  <div x-data="{ open: false }" class="bg-gray-50 p-6 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 animate-slideIn" style="animation-delay: 0.6s;">
-    <button @click="open = !open" class="flex items-center justify-between w-full text-left">
-      <div class="flex items-center space-x-2">
-        <h3 class="text-xl font-semibold">Nagios Server Monitoring</h3>
-      </div>
-      <!-- Move Icon to the Right -->
-      <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-600 transition-transform duration-300 ml-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-      </svg>
-    </button>
-    <p x-show="open" x-transition class="text-gray-600 mt-2">
-      Implemented Nagios to monitor 147 production servers, ensuring high availability and performance.
-    </p>
-  </div>
-
-  <!-- Project 4 -->
-  <div x-data="{ open: false }" class="bg-gray-50 p-6 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 animate-slideIn" style="animation-delay: 0.8s;">
-    <button @click="open = !open" class="flex items-center justify-between w-full text-left">
-      <div class="flex items-center space-x-2">
-        <h3 class="text-xl font-semibold">Wazuh SIEM Implementation</h3>
-      </div>
-      <!-- Move Icon to the Right -->
-      <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-600 transition-transform duration-300 ml-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-      </svg>
-    </button>
-    <p x-show="open" x-transition class="text-gray-600 mt-2">
-      Deployed Wazuh for log analysis and intrusion detection, enhancing security monitoring capabilities.
-    </p>
-  </div>
-
-  <!-- Project 5 -->
-  <div x-data="{ open: false }" class="bg-gray-50 p-6 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 animate-slideIn" style="animation-delay: 1.0s;">
-    <button @click="open = !open" class="flex items-center justify-between w-full text-left">
-      <div class="flex items-center space-x-2">
-        <h3 class="text-xl font-semibold">Expense Tracking System</h3>
-      </div>
-      <!-- Move Icon to the Right -->
-      <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-600 transition-transform duration-300 ml-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-      </svg>
-    </button>
-    <p x-show="open" x-transition class="text-gray-600 mt-2">
-      Developed a C#/MySQL-based system for a construction firm to track project expenses efficiently.
-    </p>
-  </div>
-
-  <!-- Project 6 -->
-  <div x-data="{ open: false }" class="bg-gray-50 p-6 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 animate-slideIn" style="animation-delay: 1.2s;">
-    <button @click="open = !open" class="flex items-center justify-between w-full text-left">
-      <div class="flex items-center space-x-2">
-        <h3 class="text-xl font-semibold">E-commerce Website with AWS Lightsail</h3>
-      </div>
-      <!-- Move Icon to the Right -->
-      <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-600 transition-transform duration-300 ml-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-      </svg>
-    </button>
-    <p x-show="open" x-transition class="text-gray-600 mt-2">
-      Built a scalable e-commerce website using a prebuilt WordPress instance on AWS Lightsail.
-    </p>
-  </div>
-  
-  
-  <!-- Project 7 -->
-<div x-data="{ open: false }" class="bg-gray-50 p-6 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 animate-slideIn" style="animation-delay: 1.4s;">
-  <button @click="open = !open" class="flex items-center justify-between w-full text-left">
-    <div class="flex items-center space-x-2">
-      <h3 class="text-xl font-semibold">Personal Project</h3>
     </div>
-    <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-600 transition-transform duration-300 ml-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-    </svg>
-  </button>
-  <div x-show="open" x-transition class="mt-2 text-gray-600 space-y-2">
-    <div x-data="{ subOpen: false }">
-      <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
-        CLI▶ Server Performance Stat
-      </button>
-    </div>
-    <div x-data="{ subOpen: false }">
-      <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
-        CLI▶ Nginx Log Analyser
-      </button>
-    </div>
-    <div x-data="{ subOpen: false }">
-      <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
-        CLI▶ Log Archive Tool
-      </button>
-    </div>
-     <div x-data="{ subOpen: false }">
-      <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
-        CI/CD▶ Use rsync To Update A Remote Server
-      </button>
-    </div>
-     <div x-data="{ subOpen: false }">
-      <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
-        CI/CD▶ GitHub Pages Deployment
-      </button>
-    </div>
-     <div x-data="{ subOpen: false }">
-      <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
-        DNS▶ Basic DNS Setup
-      </button>
-    </div>   
-    <div x-data="{ subOpen: false }">
-      <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
-        Monitoring▶ Monitor System With NetData
-      </button>
-    </div>
-    <div x-data="{ subOpen: false }">
-      <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
-        Deployment▶ Deploy Nodejs Server + Ansible
-      </button>
-    </div>
-    <div x-data="{ subOpen: false }">
-      <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
-        Deployment▶ Deploy Drupal Server + Ansible
-      </button>
-    </div>
-
-    <div x-data="{ subOpen: false }">
-  <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
-    Scripting ▶ (arrow down) Bash script to check if an EC2 instance is running
-  </button>
-  <div x-show="subOpen" class="pl-6 pt-2 text-[5px] font-mono whitespace-pre-wrap">
-    #!/usr/bin/env python3
-    import os
-    import boto3
-    from datetime import datetime
-
-    with open('instance_ids.txt', 'r') as file:
-        instance_ids = [line.strip('"\n') for line in file]
-
-    ec2 = boto3.client('ec2')
-    current_time = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-    output_dir = "ec2-status"
-    os.makedirs(output_dir, exist_ok=True)
-    output_file_path = os.path.join(output_dir, f"ec2_status_{current_time}.txt")
-    response = ec2.describe_instances(InstanceIds=instance_ids)
-
-    with open(output_file_path, 'w') as output_file:
-        for reservation in response['Reservations']:
-            for instance in reservation['Instances']:
-                instance_id = instance['InstanceId']
-                state = instance['State']['Name']
-                name = "N/A"
-                if 'Tags' in instance:
-                    for tag in instance['Tags']:
-                        if tag['Key'] == 'Name':
-                            name = tag['Value']
-                            break
-                output_file.write(f"Instance {instance_id} ({name}) is {state}\n")
-
-    print(f"[✓] EC2 status written to: {output_file_path}")
-  </div>
-</div>
-
-
+  </div> <!-- Added missing closing tag for grid container -->
 </section>
+
+  
+
 
   <!-- Skills -->
   <section id="skills" class="bg-white py-16">
