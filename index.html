@@ -107,7 +107,7 @@ l<!DOCTYPE html>
 </section>
 
 <!-- Projects -->
-<section id="projects" class="bg-white py-8">
+<section id="projects" class="bg-white py-8" x-data="{ openModal: false }">
   <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 animate-fadeIn">Key Projects</h2>
   <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 py-8">
     <!-- Project 1: Portfolio Website with CI/CD -->
@@ -284,104 +284,278 @@ l<!DOCTYPE html>
       </div>
     </div>
 
-    <!-- Project 7: Personal Project -->
+    <!-- Project 7: Personal Project (Opens Modal) -->
     <div
-      x-data="{ open: false }"
-      @click="open = !open"
-      @keydown.enter="open = !open"
-      @keydown.space="open = !open"
+      @click="openModal = true; console.log('Card clicked, openModal:', openModal)"
+      @keydown.enter="openModal = true"
+      @keydown.space="openModal = true"
       role="button"
       tabindex="0"
       class="bg-white p-4 rounded-lg shadow-md border border-gray-200 transition-transform duration-300 hover:scale-105 cursor-pointer animate-slideIn"
       style="animation-delay: 1.4s;"
-      :aria-expanded="open"
-      aria-controls="project-7-description"
+      aria-controls="personal-project-modal"
     >
       <div class="flex items-start justify-between mb-2">
         <span class="inline-flex items-center px-2 py-1 text-xs font-medium text-yellow-800 bg-yellow-100 rounded-full">Personal</span>
-        <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-600 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-        </svg>
       </div>
       <h3 class="text-lg font-semibold mb-2">Personal Project</h3>
-      <div x-show="open" x-transition id="project-7-description" class="mt-2 text-gray-600 space-y-2">
-        <div x-data="{ subOpen: false }">
-          <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
-            CLI▶ Server Performance Stat
-          </button>
-          <div x-show="subOpen" x-transition class="pl-6 pt-2 text-gray-600">
-            Developed a CLI tool to monitor server performance metrics, including CPU, memory, and disk usage.
+      <div class="mt-2 text-gray-500 text-xs flex items-center">
+        <span class="mr-1">⏳</span>
+        Multiple Sub-Projects
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for Personal Project -->
+  <div
+    x-show="openModal"
+    x-transition.opacity
+    class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+    @click.self="openModal = false; console.log('Modal closed')"
+  >
+    <div
+      class="bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 max-h-[80vh] overflow-y-auto p-6 relative"
+      @click.stop
+    >
+      <!-- Close Button -->
+      <button
+        @click="openModal = false"
+        class="absolute top-4 right-4 text-gray-600 hover:text-gray-800"
+        aria-label="Close modal"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <!-- Modal Header -->
+      <h3 class="text-2xl font-bold mb-4">Personal Project Sub-Projects</h3>
+      <!-- Nested Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Sub-Project 1: Server Performance Stat -->
+        <div
+          x-data="{ open: false }"
+          @click="open = !open"
+          @keydown.enter="open = !open"
+          @keydown.space="open = !open"
+          role="button"
+          tabindex="0"
+          class="bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200 cursor-pointer"
+          :aria-expanded="open"
+          aria-controls="subproject-1-description"
+        >
+          <div class="flex items-start justify-between mb-2">
+            <span class="text-sm font-semibold">CLI: Server Performance Stat</span>
+            <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-600 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+          <div x-show="open" x-transition id="subproject-1-description" class="mt-2 bg-white border border-gray-300 rounded-md p-4 shadow-inner text-sm text-gray-600">
+            Developed a CLI tool to monitor server performance metrics, including CPU, memory, and disk usage. Export available in CSV/JSON.
           </div>
         </div>
-        <div x-data="{ subOpen: false }">
-          <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
-            CLI▶ Nginx Log Analyser
-          </button>
-          <div x-show="subOpen" x-transition class="pl-6 pt-2 text-gray-600">
+
+        <!-- Sub-Project 2: Nginx Log Analyser -->
+        <div
+          x-data="{ open: false }"
+          @click="open = !open"
+          @keydown.enter="open = !open"
+          @keydown.space="open = !open"
+          role="button"
+          tabindex="0"
+          class="bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200 cursor-pointer"
+          :aria-expanded="open"
+          aria-controls="subproject-2-description"
+        >
+          <div class="flex items-start justify-between mb-2">
+            <span class="text-sm font-semibold">CLI: Nginx Log Analyser</span>
+            <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-600 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+          <div x-show="open" x-transition id="subproject-2-description" class="mt-2 bg-white border border-gray-300 rounded-md p-4 shadow-inner text-sm text-gray-600">
             Created a CLI tool to parse and analyze Nginx logs, providing insights into traffic patterns and errors.
           </div>
         </div>
-        <div x-data="{ subOpen: false }">
-          <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
-            CLI▶ Log Archive Tool
-          </button>
-          <div x-show="subOpen" x-transition class="pl-6 pt-2 text-gray-600">
+
+        <!-- Sub-Project 3: Log Archive Tool -->
+        <div
+          x-data="{ open: false }"
+          @click="open = !open"
+          @keydown.enter="open = !open"
+          @keydown.space="open = !open"
+          role="button"
+          tabindex="0"
+          class="bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200 cursor-pointer"
+          :aria-expanded="open"
+          aria-controls="subproject-3-description"
+        >
+          <div class="flex items-start justify-between mb-2">
+            <span class="text-sm font-semibold">CLI: Log Archive Tool</span>
+            <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-600 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+          <div x-show="open" x-transition id="subproject-3-description" class="mt-2 bg-white border border-gray-300 rounded-md p-4 shadow-inner text-sm text-gray-600">
             Built a CLI tool to compress and archive log files, optimizing storage and retrieval.
           </div>
         </div>
-        <div x-data="{ subOpen: false }">
-          <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
-            CI/CD▶ Use rsync To Update A Remote Server
-          </button>
-          <div x-show="subOpen" x-transition class="pl-6 pt-2 text-gray-600">
+
+        <!-- Sub-Project 4: rsync CI/CD -->
+        <div
+          x-data="{ open: false }"
+          @click="open = !open"
+          @keydown.enter="open = !open"
+          @keydown.space="open = !open"
+          role="button"
+          tabindex="0"
+          class="bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200 cursor-pointer"
+          :aria-expanded="open"
+          aria-controls="subproject-4-description"
+        >
+          <div class="flex items-start justify-between mb-2">
+            <span class="text-sm font-semibold">CI/CD: rsync Update</span>
+            <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-600 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+          <div x-show="open" x-transition id="subproject-4-description" class="mt-2 bg-white border border-gray-300 rounded-md p-4 shadow-inner text-sm text-gray-600">
             Implemented a CI/CD pipeline using rsync to synchronize and update files on a remote server.
           </div>
         </div>
-        <div x-data="{ subOpen: false }">
-          <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
-            CI/CD▶ GitHub Pages Deployment
-          </button>
-          <div x-show="subOpen" x-transition class="pl-6 pt-2 text-gray-600">
+
+        <!-- Sub-Project 5: GitHub Pages Deployment -->
+        <div
+          x-data="{ open: false }"
+          @click="open = !open"
+          @keydown.enter="open = !open"
+          @keydown.space="open = !open"
+          role="button"
+          tabindex="0"
+          class="bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200 cursor-pointer"
+          :aria-expanded="open"
+          aria-controls="subproject-5-description"
+        >
+          <div class="flex items-start justify-between mb-2">
+            <span class="text-sm font-semibold">CI/CD: GitHub Pages</span>
+            <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-600 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+          <div x-show="open" x-transition id="subproject-5-description" class="mt-2 bg-white border border-gray-300 rounded-md p-4 shadow-inner text-sm text-gray-600">
             Automated deployment of static sites to GitHub Pages using CI/CD workflows.
           </div>
         </div>
-        <div x-data="{ subOpen: false }">
-          <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
-            DNS▶ Basic DNS Setup
-          </button>
-          <div x-show="subOpen" x-transition class="pl-6 pt-2 text-gray-600">
+
+        <!-- Sub-Project 6: Basic DNS Setup -->
+        <div
+          x-data="{ open: false }"
+          @click="open = !open"
+          @keydown.enter="open = !open"
+          @keydown.space="open = !open"
+          role="button"
+          tabindex="0"
+          class="bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200 cursor-pointer"
+          :aria-expanded="open"
+          aria-controls="subproject-6-description"
+        >
+          <div class="flex items-start justify-between mb-2">
+            <span class="text-sm font-semibold">DNS: Basic Setup</span>
+            <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-600 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+          <div x-show="open" x-transition id="subproject-6-description" class="mt-2 bg-white border border-gray-300 rounded-md p-4 shadow-inner text-sm text-gray-600">
             Configured DNS records for domain management, including A, CNAME, and MX records.
           </div>
         </div>
-        <div x-data="{ subOpen: false }">
-          <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
-            Monitoring▶ Monitor System With NetData
-          </button>
-          <div x-show="subOpen" x-transition class="pl-6 pt-2 text-gray-600">
+
+        <!-- Sub-Project 7: NetData Monitoring -->
+        <div
+          x-data="{ open: false }"
+          @click="open = !open"
+          @keydown.enter="open = !open"
+          @keydown.space="open = !open"
+          role="button"
+          tabindex="0"
+          class="bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200 cursor-pointer"
+          :aria-expanded="open"
+          aria-controls="subproject-7-description"
+        >
+          <div class="flex items-start justify-between mb-2">
+            <span class="text-sm font-semibold">Monitoring: NetData</span>
+            <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-600 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </div>
+          <div x-show="open" x-transition id="subproject-7-description" class="mt-2 bg-white border border-gray-300 rounded-md p-4 shadow-inner text-sm text-gray-600">
             Set up NetData for real-time system monitoring, visualizing performance metrics.
           </div>
         </div>
-        <div x-data="{ subOpen: false }">
-          <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
-            Deployment▶ Deploy Nodejs Server + Ansible
-          </button>
-          <div x-show="subOpen" x-transition class="pl-6 pt-2 text-gray-600">
+
+        <!-- Sub-Project 8: Node.js Deployment -->
+        <div
+          x-data="{ open: false }"
+          @click="open = !open"
+          @keydown.enter="open = !open"
+          @keydown.space="open = !open"
+          role="button"
+          tabindex="0"
+          class="bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200 cursor-pointer"
+          :aria-expanded="open"
+          aria-controls="subproject-8-description"
+        >
+          <div class="flex items-start justify-between mb-2">
+            <span class="text-sm font-semibold">Deployment: Node.js + Ansible</span>
+            <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-600 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+          <div x-show="open" x-transition id="subproject-8-description" class="mt-2 bg-white border border-gray-300 rounded-md p-4 shadow-inner text-sm text-gray-600">
             Automated deployment of a Node.js server using Ansible playbooks for configuration management.
           </div>
         </div>
-        <div x-data="{ subOpen: false }">
-          <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
-            Deployment▶ Deploy Drupal Server + Ansible
-          </button>
-          <div x-show="subOpen" x-transition class="pl-6 pt-2 text-gray-600">
+
+        <!-- Sub-Project 9: Drupal Deployment -->
+        <div
+          x-data="{ open: false }"
+          @click="open = !open"
+          @keydown.enter="open = !open"
+          @keydown.space="open = !open"
+          role="button"
+          tabindex="0"
+          class="bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200 cursor-pointer"
+          :aria-expanded="open"
+          aria-controls="subproject-9-description"
+        >
+          <div class="flex items-start justify-between mb-2">
+            <span class="text-sm font-semibold">Deployment: Drupal + Ansible</span>
+            <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-600 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+          <div x-show="open" x-transition id="subproject-9-description" class="mt-2 bg-white border border-gray-300 rounded-md p-4 shadow-inner text-sm text-gray-600">
             Deployed a Drupal server with Ansible, ensuring consistent and repeatable setups.
           </div>
         </div>
-        <div x-data="{ subOpen: false }">
-          <button @click="subOpen = !subOpen" class="text-left w-full pl-4 py-1 hover:text-blue-600 transition">
-            Scripting▶ Bash script to check if an EC2 instance is running
-          </button>
-          <div x-show="subOpen" x-transition class="pl-6 pt-2 text-sm font-mono whitespace-pre-wrap bg-white">
+
+        <!-- Sub-Project 10: EC2 Instance Check Script -->
+        <div
+          x-data="{ open: false }"
+          @click="open = !open"
+          @keydown.enter="open = !open"
+          @keydown.space="open = !open"
+          role="button"
+          tabindex="0"
+          class="bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200 cursor-pointer"
+          :aria-expanded="open"
+          aria-controls="subproject-10-description"
+        >
+          <div class="flex items-start justify-between mb-2">
+            <span class="text-sm font-semibold">Scripting: EC2 Instance Check</span>
+            <svg :class="{ 'rotate-180': open }" class="w-5 h-5 text-gray-600 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+          <div x-show="open" x-transition id="subproject-10-description" class="mt-2 bg-white border border-gray-300 rounded-md p-4 shadow-inner text-sm font-mono text-gray-600 whitespace-pre-wrap">
             #!/usr/bin/env python3
             import os
             import boto3
