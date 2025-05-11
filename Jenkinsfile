@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Repo') {
             steps {
-                git 'https://github.com/dad1755/ridergami-portfolio'
+                git branch: 'main', url: 'https://github.com/dad1755/ridergami-portfolio'
             }
         }
 
